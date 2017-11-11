@@ -1,26 +1,14 @@
-//for general response
-var response ={
-        setuccessResponse: function (message,code,data) {
-        var    successResponse = {
-                res: "true",
-                response: message,
-                token: "",
-                sessionid: "",
-                responseData: data
-            };
-            return successResponse;
-        },
-    setFailureResponse:function (error,code,data) {
-      var  failureResponse=
-        {
-            res:"false",
-            response:error,
-            token:"",
-            sessionid:"",
-            responseData:data
+var response = {
+    setResponse: function (is_success, message, code, data,sessionid,token) {
+        var response = {
+            code: code,
+            is_success: is_success,
+            description: message,
+            token: token,
+            sessionid: sessionid,
+            responseData: data
         };
-      return failureResponse;
+        return response;
     }
-
 }
-module.exports=response;
+module.exports = response;

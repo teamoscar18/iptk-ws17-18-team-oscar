@@ -20,7 +20,7 @@ function usersController() {
             console.log("result=" + result);
             console.log("err=" + err);
             if (err) {
-                return res.send(response.setFailureResponse(" Error in login ", 400, err));
+                return res.send(response.setResponse(false," Error in login ", 400, err, "",""));
             }
             else if (result) {
                 //comparasison
@@ -31,14 +31,14 @@ function usersController() {
 
                 if (bcrypt.compareSync(password, hash)) {
                     // Passwords match
-                    return res.send(response.setSuccessResponse(" login was Successfull", 200, result));
+                    return res.send(response.setResponse(true," login was Successfull", 200, result ,"",""));
                 } else {
                     // Passwords don't match
-                    return res.send(response.setFailureResponse("Email or password do not match!", 400, null));
+                    return res.send(response.setResponse(false,"Email or password do not match!", 400, null,"",""));
                 }
             }
 
-            else return res.send(response.setFailureResponse("Email does not match", 400, null));
+            else return res.send(response.setResponse(false,"Email does not match", 400, null,"",""));
         });
         return next();
     };
