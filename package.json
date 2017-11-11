@@ -1,0 +1,19 @@
+{
+  "name": "soziallebensverfolge",
+  "version": "1.0.0",
+  "description": "soziallebensverfolge andorid app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teamoscar18/soziallebensverfolge.git"
+  },
+  "author": "team oscar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/teamoscar18/soziallebensverfolge/issues"
+  },
+  "homepage": "https://github.com/teamoscar18/soziallebensverfolge#readme"
+}
