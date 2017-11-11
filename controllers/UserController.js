@@ -2,7 +2,7 @@ function usersController() {
 
     var that = this;
     var users = require('../models/usersSchema');
-    var generalResponse = require('./ServiceResponse');
+    var response = require('./ServiceResponse');
     var bcrypt = require('bcrypt');
     var mongoose = require('../db').mongoose;
 
@@ -20,7 +20,7 @@ function usersController() {
             console.log("result=" + result);
             console.log("err=" + err);
             if (err) {
-                return res.send(generalResponse.sendFailureResponse(" Error in login ", 400, err));
+                return res.send(response.setFailureResponse(" Error in login ", 400, err));
             }
             else if (result) {
                 //comparasison
@@ -31,14 +31,14 @@ function usersController() {
 
                 if (bcrypt.compareSync(password, hash)) {
                     // Passwords match
-                    return res.send(generalResponse.sendSuccessResponse(" login was Successfull", 200, result));
+                    return res.send(response.setSuccessResponse(" login was Successfull", 200, result));
                 } else {
                     // Passwords don't match
-                    return res.send(generalResponse.sendFailureResponse("Email or password do not match!", 400, null));
+                    return res.send(response.setFailureResponse("Email or password do not match!", 400, null));
                 }
             }
 
-            else return res.send(generalResponse.sendFailureResponse("Email does not match", 400, null));
+            else return res.send(response.setFailureResponse("Email does not match", 400, null));
         });
         return next();
     };

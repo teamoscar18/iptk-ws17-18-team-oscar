@@ -4,7 +4,7 @@
   "dbPath": "mongodb://oscar:oscar@ds257245.mlab.com:57245/oscar-db",
   "port": 57245,
   "git_url": "https://github.com/teamoscar18/soziallebensverfolge.git",
-  "heroku_url": ""
+  "heroku_url": "https://teamoscar.herokuapp.com/"
 
 
 }

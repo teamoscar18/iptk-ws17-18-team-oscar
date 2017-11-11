@@ -1,6 +1,6 @@
 //for general response
 var response ={
-        sendSuccessResponse: function (message,code,data) {
+        setuccessResponse: function (message,code,data) {
         var    successResponse = {
                 res: "true",
                 response: message,
@@ -10,7 +10,7 @@ var response ={
             };
             return successResponse;
         },
-    sendFailureResponse:function (error,code,data) {
+    setFailureResponse:function (error,code,data) {
       var  failureResponse=
         {
             res:"false",
