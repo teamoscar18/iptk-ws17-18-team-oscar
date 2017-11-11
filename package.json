@@ -4,6 +4,7 @@
   "description": "soziallebensverfolge andorid app",
   "main": "index.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -13,6 +14,7 @@
   "author": "team oscar",
   "license": "ISC",
   "bugs": {
+
     "url": "https://github.com/teamoscar18/soziallebensverfolge/issues"
   },
   "homepage": "https://github.com/teamoscar18/soziallebensverfolge#readme",
