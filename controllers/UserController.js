@@ -60,6 +60,8 @@ function usersController() {
                     var user = {
                         username: parameters.username,
                         email: parameters.email,
+                        firstname: parameters.firstname,
+                        lastname: parameters.lastname,
                         password: bcrypt.hashSync(req.params.password, salt),
                         hashKey: salt,
                         age: parameters.age,

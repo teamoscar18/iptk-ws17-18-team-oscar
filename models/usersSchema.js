@@ -4,7 +4,9 @@ module.exports = (function usersSchema () {
 	var mongoose = require('../db').mongoose;
 
 	var schema = {
-		username: {type: String, lowercase: true, required: true},
+        username: {type: String, lowercase: true, required: true},
+        firstname: {type: String, lowercase: true},
+        lastname: {type: String, lowercase: true},
 		email: {type: String, lowercase: true, required: true},
 		password: {type: String, required: true},
         hashKey: {type: String, required: true},

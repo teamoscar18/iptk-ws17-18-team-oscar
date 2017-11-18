@@ -1,10 +1,10 @@
-// Model for the users
+// Model for the user stats
 module.exports = (function statSchema () {
     
         var mongoose = require('../db').mongoose;
     
         var schema = {
-            username: {type: String, required: true},
+            useremail: {type: String, required: true},
             distance: {type: String, required: true},
             steps: {type: String, required: true},
             time: {type: String,required: true},
