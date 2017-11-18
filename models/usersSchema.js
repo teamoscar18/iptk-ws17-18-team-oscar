@@ -61,10 +61,10 @@ module.exports = (function usersSchema() {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'users'
         }],
-        rank: [{
+        rank: {
             type: Number,
             default: 0
-        }]
+        }
     };
 
     var collectionName = 'users';
