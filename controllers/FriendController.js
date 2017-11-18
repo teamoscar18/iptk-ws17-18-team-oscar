@@ -78,7 +78,7 @@ function friendController() {
         console.log("EMail " + useremail);
         console.log("friendemail " + friendemail);
         try {
-            users.findAndModify({
+            db.collection('users').findAndModify({
                 query: { email: useremail },
                 update: {  $addToSet: { friends: friendemail } },
                 upsert: true,
