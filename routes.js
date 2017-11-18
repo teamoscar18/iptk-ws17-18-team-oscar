@@ -15,5 +15,7 @@ module.exports = function (app) {
 
     app.get('/searchUser', userFriends.searchUser); //search Friend
 
+    app.get('/addFriend', userFriends.addFriend); //add Friend
+
 
 };
