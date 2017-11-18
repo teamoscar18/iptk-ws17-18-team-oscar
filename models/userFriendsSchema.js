@@ -3,8 +3,10 @@
 module.exports = (function userFriendsSchema() {
 
     var mongoose = require('../db').mongoose;
+    var User = require('./usersSchema');
+    var usersSchema = mongoose.model('User').schema;
     var Schema = mongoose.Schema;
-    var userSchema = require('./usersSchema').usersSchema;
+    
     
 
     var friendsSchema = {
@@ -12,11 +14,11 @@ module.exports = (function userFriendsSchema() {
             type: String,
             required: true
         },
-        friendlist: [users]
+        friendlist: [{type: Schema.Types.ObjectId, ref:'User'}]
     };
 
     var collectionName = 'userfriends';
-    var users = mongoose.model('users',usersSchema);
+    //var users = mongoose.model('users',usersSchema);
     var userFriendsSchema = mongoose.Schema(friendsSchema);   
     var userFriends = mongoose.model(collectionName, userFriendsSchema);
 
