@@ -92,8 +92,8 @@ function usersController() {
 
                                 transporter.sendMail({
                                     to: user.email,
-                                    subject: "Victor City Registration Success",
-                                    text: "You have successfully registered to Victor City. Exploration of World is now on tip of your hand"
+                                    subject: "Social Life Tracking App Registration Success",
+                                    text: "You have successfully registered to Social Life Tracking App. Exploration of World is now on tip of your hand"
                                 }, function (error, info) {
                                     if (error) {
                                         console.log("UtilController that.sendEmail() Email Send error ", error);

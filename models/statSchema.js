@@ -33,7 +33,7 @@ module.exports = (function statSchema() {
         }
     };
 
-    var collectionName = 'oscar';
+    var collectionName = 'userstats';
     var statSchema = mongoose.Schema(schema);
     var userstat = mongoose.model(collectionName, statSchema);
 

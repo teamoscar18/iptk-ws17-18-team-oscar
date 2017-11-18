@@ -66,7 +66,7 @@ module.exports = (function usersSchema() {
         }]
     };
 
-    var collectionName = 'oscar';
+    var collectionName = 'users';
     var usersSchema = mongoose.Schema(schema);
     var users = mongoose.model(collectionName, usersSchema);
 
