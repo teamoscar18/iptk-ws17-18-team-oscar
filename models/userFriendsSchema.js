@@ -3,7 +3,7 @@
 module.exports = (function userFriendsSchema() {
 
     var mongoose = require('../db').mongoose;
-    var userSchema = require('./usersSchema');
+    var userSchema = require('./usersSchema').schema;
     
 
     var schema = {
