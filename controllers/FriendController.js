@@ -1,7 +1,7 @@
 function friendController() {
 
     var that = this;
-    var user = require('../models/usersSchema');
+    var users = require('../models/usersSchema');
     var friends = require('../models/userFriendsSchema');
     var response = require('./ServiceResponse');
     var mongoose = require('../db').mongoose;
@@ -78,7 +78,7 @@ function friendController() {
         console.log("EMail " + useremail);
         console.log("friendemail " + friendemail);
         try {
-            db.collection('users').findAndModify({
+            users.findAndModify({
                 query: { email: useremail },
                 update: {  $addToSet: { friends: friendemail } },
                 upsert: true,
