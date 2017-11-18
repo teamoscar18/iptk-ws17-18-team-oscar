@@ -4,7 +4,7 @@ module.exports = (function userFriendsSchema() {
 
     var mongoose = require('../db').mongoose;
     var Schema = mongoose.Schema;
-    require('./usersSchema');
+    var userSchema = require('./usersSchema').usersSchema;
     
 
     var friendsSchema = {
@@ -16,7 +16,7 @@ module.exports = (function userFriendsSchema() {
     };
 
     var collectionName = 'userfriends';
-    var users = mongoose.model('users');
+    var users = mongoose.model('users',usersSchema);
     var userFriendsSchema = mongoose.Schema(friendsSchema);   
     var userFriends = mongoose.model(collectionName, userFriendsSchema);
 
