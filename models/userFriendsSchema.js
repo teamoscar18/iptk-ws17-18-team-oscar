@@ -12,10 +12,7 @@ module.exports = (function userFriendsSchema() {
             type: String,
             required: true
         },
-        friendlist: [{
-            type: Schema.Types.ObjectId,
-            ref: 'users'
-        }]
+        friendlist: [users]
     };
 
     var collectionName = 'userfriends';
