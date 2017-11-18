@@ -43,9 +43,10 @@ function friendController() {
 
     // Search Friend
     that.searchUser = function (req, res, next) {
+        var useremail = req.params.email;
         try {
             users.findOne({
-                email: email
+                email: useremail
             }, function (err, result) {
 
                 console.log("result=" + result);
@@ -68,6 +69,42 @@ function friendController() {
             return res.send(response.setResponse(false, "/searchUser:Exception Occured", 400, ex, "", ""));
         }
     };
+
+     // add Friend
+     that.addFriend = function (req, res, next) {
+        var useremail = req.params.email;
+        var friendemail = req.params.friendemail;
+        try {
+            users.findAndModify({
+                query: { email: useremail },
+                //sort: { rating: 1 },
+                update: {  $addToSet: { friends: friendemail } },
+                upsert: true,
+                new: true
+            }, function (err, result) {
+
+                console.log("result=" + result);
+                console.log("err=" + err);
+                if (err) {
+                    return res.send(response.setResponse(false, " Server encountered some error, please Try again! ", 400, err, "", ""));
+                } else if (result) {
+                    
+
+                    if (result) {
+
+                        return res.send(response.setResponse(true, " Fechting Friend successfull ", 200, result, "", ""));
+                    } else {
+
+                        return res.send(response.setResponse(false, " User does not exist", 400, null, "", ""));
+                    }
+                } else return res.send(response.setResponse(false, "User does not exist", 400, null, "", ""));
+            });
+        } catch (ex) {
+            console.log("Exception:" + ex);
+            return res.send(response.setResponse(false, "/addFriend:Exception Occured", 400, ex, "", ""));
+        }
+    };
+
 
 
 };
