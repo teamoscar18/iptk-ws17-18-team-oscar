@@ -95,7 +95,9 @@ function friendController() {
                 } else if (friend) {
                     console.log("friendid=" + friend._id);
                     console.log("useremail=" + useremail);
-                    users.findOneAndUpdate(query,{friends:{ $addToSet: friend._id }},options,function (err, user) {
+                    users.update(query,{$push:{friends:mongoose.Types.ObjectId(friend._id)}});
+                    users.save(function (err, user) {
+                    // users.findOneAndUpdate(query,{friends:{ $addToSet: friend._id }},options,function (err, user) {
                         if (user) {
                             return res.send(response.setResponse(true, " adding Friend successfull ", 200, user, "", ""));
                         } else {
