@@ -78,11 +78,30 @@ function friendController() {
      that.addFriend = function (req, res, next) {
         var useremail = req.params.email;
         var friendemail = req.params.friendemail;
+        
         console.log("EMail " + useremail);
         console.log("friendemail " + friendemail);
         try {
             var options = {upsert: true, new: true};
             var query = { email: useremail };
+            users.findOne({
+                email: friendemail
+            }, function (err, friend) {
+
+                console.log("result=" + friend);
+                console.log("err=" + err);
+                if (err) {
+                    return res.send(response.setResponse(false, " Server encountered some error, please Try again! ", 400, err, "", ""));
+                } else if (friend) {
+                    users.findOneAndUpdate(query,{ $addToSet: friend },options,function (err, user) {
+                        if (user) {
+                            return res.send(response.setResponse(true, " adding Friend successfull ", 200, user, "", ""));
+                        } else {
+                            return res.send(response.setResponse(false, " User does not exist", 400, null, "", ""));
+                        }
+                    });
+                } else return res.send(response.setResponse(false, "Friend user does not exist", 400, null, "", ""));
+            });
 
            
         } catch (ex) {
