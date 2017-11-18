@@ -46,7 +46,7 @@ function friendController() {
 
     // Search Friend
     that.searchUser = function (req, res, next) {
-        var userid = req.params.email;
+        var userid = req.params.userid;
         console.log("userId " + userid);
 
         try {
