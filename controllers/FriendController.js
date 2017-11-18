@@ -44,6 +44,7 @@ function friendController() {
     // Search Friend
     that.searchUser = function (req, res, next) {
         var useremail = req.params.email;
+        console.log("EMail " + useremail);
         try {
             users.findOne({
                 email: useremail
@@ -74,6 +75,8 @@ function friendController() {
      that.addFriend = function (req, res, next) {
         var useremail = req.params.email;
         var friendemail = req.params.friendemail;
+        console.log("EMail " + useremail);
+        console.log("friendemail " + friendemail);
         try {
             users.findAndModify({
                 query: { email: useremail },
