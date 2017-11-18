@@ -58,7 +58,7 @@ function usersController() {
 
                     var parameters = req.params;
                     var user = {
-                        username: parameters.userName,
+                        userName: parameters.userName,
                         email: parameters.email,
                         firstName: parameters.firstName,
                         lastName: parameters.lastName,
