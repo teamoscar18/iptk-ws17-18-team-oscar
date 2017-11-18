@@ -11,7 +11,7 @@ function friendController() {
     that.getFriends = function (req, res, next) {
         var useremail = req.params.email;
         //var userfriend = req.params.userfriend;
-        console.log("EMail " + email)
+        console.log("EMail " + useremail);
         //console.log("Password " + password)
 
         try {
