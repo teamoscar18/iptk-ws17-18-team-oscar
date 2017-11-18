@@ -73,7 +73,7 @@ function friendController() {
             } else {
                 users.find({
                     userName: userid
-                }, function (err, result) {
+                },'friends', function (err, result) {
 
                     console.log("result=" + result);
                     console.log("err=" + err);
