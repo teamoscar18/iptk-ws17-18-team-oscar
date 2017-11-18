@@ -48,7 +48,7 @@ function friendController() {
         var useremail = req.params.email;
         console.log("EMail " + useremail);
         try {
-            users.findOne({
+            users.find({
                 email: useremail
             }, function (err, result) {
 
