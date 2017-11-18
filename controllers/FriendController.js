@@ -93,11 +93,11 @@ function friendController() {
                 if (err) {
                     return res.send(response.setResponse(false, " Server encountered some error, please Try again! ", 400, err, "", ""));
                 } else if (friend) {
-                    users.findOneAndUpdate(query,{friends:{ $addToSet: friend }},options,function (err, user) {
+                    users.findOneAndUpdate(query,{friends:{ $addToSet: friend._id }},options,function (err, user) {
                         if (user) {
                             return res.send(response.setResponse(true, " adding Friend successfull ", 200, user, "", ""));
                         } else {
-                            return res.send(response.setResponse(false, " User does not exist", 400, null, "", ""));
+                            return res.send(response.setResponse(false, " User does not exist:98", 400, null, "", ""));
                         }
                     });
                 } else return res.send(response.setResponse(false, "Friend user does not exist", 400, null, "", ""));
