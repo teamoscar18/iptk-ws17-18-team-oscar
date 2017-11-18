@@ -50,7 +50,7 @@ function friendController() {
         console.log("EMail " + useremail);
 
         try {
-            if (validator.isEmail(useremail)) {
+            if (validator.isEmail(String(useremail))) {
                 users.find({
                     email: useremail
                 }, function (err, result) {
