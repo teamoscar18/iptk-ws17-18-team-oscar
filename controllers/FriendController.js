@@ -17,7 +17,9 @@ function friendController() {
         try {
             users.findOne({
                 email: useremail
-            // }, {
+            }
+            // , 
+            // {
             //     friends: 1,
             //     email: 1
             // }
