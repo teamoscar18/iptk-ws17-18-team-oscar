@@ -3,10 +3,10 @@
 module.exports = (function userFriendsSchema() {
 
     var mongoose = require('../db').mongoose;
-    var userSchema = require('./usersSchema').schema;
+    var userSchema = require('./usersSchema');
     
 
-    var schema = {
+    var friendsSchema = {
         useremail: {
             type: String,
             required: true
@@ -18,7 +18,7 @@ module.exports = (function userFriendsSchema() {
     };
 
     var collectionName = 'oscar';
-    var userFriendsSchema = mongoose.Schema(schema);
+    var userFriendsSchema = mongoose.Schema(friendsSchema);
     var user = mongoose.model(collectionName, userSchema);
     var userFriends = mongoose.model(collectionName, userFriendsSchema)
 
