@@ -93,7 +93,7 @@ function friendController() {
                 if (err) {
                     return res.send(response.setResponse(false, " Server encountered some error, please Try again! ", 400, err, "", ""));
                 } else if (friend) {
-                    users.findOneAndUpdate(query,{ $addToSet: friend },options,function (err, user) {
+                    users.findOneAndUpdate(query,{friends:{ $addToSet: friend }},options,function (err, user) {
                         if (user) {
                             return res.send(response.setResponse(true, " adding Friend successfull ", 200, user, "", ""));
                         } else {
