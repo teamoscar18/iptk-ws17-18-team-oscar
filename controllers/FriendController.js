@@ -2,7 +2,7 @@ function friendController() {
 
     var that = this;
     var user = require('../models/usersSchema');
-    var friends = require('../models/userFriends');
+    var friends = require('../models/userFriendsSchema');
     var response = require('./ServiceResponse');
     var mongoose = require('../db').mongoose;
 
