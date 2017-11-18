@@ -15,7 +15,7 @@ function friendController() {
         //console.log("Password " + password)
 
         try {
-            users.findOne({
+            users.find({
                 email: useremail
             }, function (err, result) {
 
