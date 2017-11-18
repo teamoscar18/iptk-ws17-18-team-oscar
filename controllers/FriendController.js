@@ -112,7 +112,7 @@ function friendController() {
                                         return res.send(response.setResponse(true, " Fechting Friend successfull ", 200, result, "", ""));
                                     } else {
         
-                                        friends.findOne({useremail:useremail}).populate(firends).exec(function (err, story) {
+                                        // friends.findOne({useremail:useremail}).populate(firends).exec(function (err, story) {
                                         return res.send(response.setResponse(false, "findOne"+useremail+" "+err, 400, null, "", ""));
                                     }
                                 });
