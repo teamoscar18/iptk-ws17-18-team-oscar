@@ -3,7 +3,8 @@
 module.exports = (function userFriendsSchema() {
 
     var mongoose = require('../db').mongoose;
-    var user = require('../models/usersSchema');
+    var userSchema = require('./usersSchema');
+    
 
     var schema = {
         useremail: {
@@ -11,13 +12,14 @@ module.exports = (function userFriendsSchema() {
             required: true
         },
         friendlist: [{
-            type: Schema.ObjectId,
+            type: Schema.Types.ObjectId,
             ref: "user"
         }]
     };
 
     var collectionName = 'oscar';
     var userFriendsSchema = mongoose.Schema(schema);
+    var user = mongoose.model(collectionName, userSchema);
     var userFriends = mongoose.model(collectionName, userFriendsSchema)
 
     return userFriends;
