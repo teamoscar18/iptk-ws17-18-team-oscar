@@ -1,27 +1,72 @@
 // Model for the users
-module.exports = (function usersSchema () {
+module.exports = (function usersSchema() {
 
-	var mongoose = require('../db').mongoose;
+    var mongoose = require('../db').mongoose;
 
-	var schema = {
-        username: {type: String, lowercase: true, required: true},
-        firstname: {type: String, lowercase: true},
-        lastname: {type: String, lowercase: true},
-		email: {type: String, lowercase: true, required: true},
-		password: {type: String, required: true},
-        hashKey: {type: String, required: true},
-        age: {type: String, min: 10, max: 120, required: true},
-        number: {type: String, required: true},
-        state: {type: String, lowercase: true, required: true},
-        city: {type: String, lowercase: true, required: true},
-        imageURL: {type: String},
-        verificationCode: {type: String},
-        friends: [{type:String}],
-        comments:[{type:String}],
-        rank:[{type:String}]
-	};
+    var schema = {
+        userName: {
+            type: String,
+            lowercase: true,
+            required: true
+        },
+        firstName: {
+            type: String,
+            lowercase: true,
+            required: true
+        },
+        lastName: {
+            type: String,
+            lowercase: true,
+            required: true
+        },
+        email: {
+            type: String,
+            lowercase: true,
+            required: true
+        },
+        password: {
+            type: String,
+            required: true
+        },
+        hashKey: {
+            type: String,
+            required: true
+        },
+        age: {
+            type: String,
+            min: 10,
+            max: 120,
+            required: true
+        },
+        mobileNumber: {
+            type: String
+        },
+        state: {
+            type: String,
+            lowercase: true,
+            required: true
+        },
+        city: {
+            type: String,
+            lowercase: true,
+            required: true
+        },
+        imageUrl: {
+            type: String
+        },
+        verificationCode: {
+            type: String
+        },
+        friends: [{
+            type: String
+        }],
+        rank: [{
+            type: Number,
+            default: 0
+        }]
+    };
 
-    var collectionName = 'users';
+    var collectionName = 'oscar';
     var usersSchema = mongoose.Schema(schema);
     var users = mongoose.model(collectionName, usersSchema);
 
