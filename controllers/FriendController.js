@@ -75,9 +75,9 @@ function friendController() {
     };
 
     // Search Friend
-    that.searchUserByUserName = function (req, res, next) {
+    that.searchFriendByUserName = function (req, res, next) {
         var userName = req.params.username;
-        console.log("EMail " + useremail);
+        console.log("username " + username);
         try {
             users.find({
                 userName: userName
