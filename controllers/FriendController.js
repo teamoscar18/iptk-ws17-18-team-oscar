@@ -75,11 +75,11 @@ function friendController() {
 
     // Search Friend
     that.searchUserByUserName = function (req, res, next) {
-        var userName = req.params.username;
-        console.log("EMail " + useremail);
+        var username = req.params.username;
+        console.log("username " + username);
         try {
             users.find({
-                userName: userName
+                userName: username
             }, function (err, result) {
 
                 console.log("result=" + result);
