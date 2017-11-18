@@ -91,7 +91,7 @@ function friendController() {
                 if (err) {
                     return res.send(response.setResponse(false, " Server encountered some error, please Try again! ", 400, err, "", ""));
                 } else if (result) {
-                    
+                    query = { useremail: useremail };
                     friends.findOneAndUpdate(
                         query,
                         {  $set: { useremail: useremail } },
@@ -112,7 +112,6 @@ function friendController() {
                                         return res.send(response.setResponse(true, " Fechting Friend successfull ", 200, result, "", ""));
                                     } else {
         
-                                        // friends.findOne({useremail:useremail}).populate(firends).exec(function (err, story) {
                                         return res.send(response.setResponse(false, "findOne"+useremail+" "+err, 400, null, "", ""));
                                     }
                                 });
