@@ -98,17 +98,15 @@ function friendController() {
                         options
                         , function (err, result) {
                             if (result) {
+                                console.log('added email address in user friendlist %s', result.friends);
                                 var friend = users.findOne({email:friendemail},function(err,user){
                                     if (user) {
-                                        friends.findOne({useremail:useremail}).populate(firends).exec(function (err, story) {
-                                            if (err)res.send(response.setResponse(false, err, 400, null, "", ""));;
-                                            
-                                            console.log('The author is %s', story.useremail);
-                                            // prints "The author is Ian Fleming"
-                                            
+                                        console.log('friend exists in user table %s', user.email);
+                                        friends.findOne({useremail:useremail}).populate(firend).exec(function (err, story) {
+                                            if (err)res.send(response.setResponse(false, err, 400, null, "", ""));
                                             console.log('The authors age is %s', story.useremail);
-                                            // prints "The authors age is null'
-                                          });                               
+                                          });
+                                          console.log('friend exists in user table %s', story);                               
                                         return res.send(response.setResponse(true, " Fechting Friend successfull ", 200, result, "", ""));
                                     } else {
         
