@@ -74,6 +74,36 @@ function friendController() {
         }
     };
 
+    // Search Friend
+    that.searchUserByUserName = function (req, res, next) {
+        var userName = req.params.username;
+        console.log("EMail " + useremail);
+        try {
+            users.find({
+                userName: userName
+            }, function (err, result) {
+
+                console.log("result=" + result);
+                console.log("err=" + err);
+                if (err) {
+                    return res.send(response.setResponse(false, " Server encountered some error, please Try again! ", 400, err, "", ""));
+                } else if (result) {
+
+                    if (result) {
+
+                        return res.send(response.setResponse(true, " Fechting Friend successfull ", 200, result, "", ""));
+                    } else {
+
+                        return res.send(response.setResponse(false, " User does not exist", 400, null, "", ""));
+                    }
+                } else return res.send(response.setResponse(false, "User does not exist", 400, null, "", ""));
+            });
+        } catch (ex) {
+            console.log("Exception:" + ex);
+            return res.send(response.setResponse(false, "/searchUser:Exception Occured", 400, ex, "", ""));
+        }
+    };
+
      // add Friend
      that.addFriend = function (req, res, next) {
         var useremail = req.params.email;
@@ -93,10 +123,6 @@ function friendController() {
                 if (err) {
                     return res.send(response.setResponse(false, " Server encountered some error, please Try again! ", 400, err, "", ""));
                 } else if (friend) {
-                    console.log("friendid=" + friend._id);
-                    console.log("useremail=" + useremail);
-                    //users.findOneAndUpdate(query,{$push:{friends:mongoose.Types.ObjectId(friend._id)}});
-                    //users.save(function (err, user) {
                     users.findOneAndUpdate(query,{$push:{friends:mongoose.Types.ObjectId(friend._id)}},options,function (err, user) {
                         if (user) {
                             return res.send(response.setResponse(true, " adding Friend successfull ", 200, user, "", ""));
