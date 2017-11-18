@@ -57,9 +57,7 @@ module.exports = (function usersSchema() {
         verificationCode: {
             type: String
         },
-        friends: [{
-            type: String
-        }],
+        friends: [{ type: ObjectId, ref: 'users' }],
         rank: [{
             type: Number,
             default: 0
@@ -68,7 +66,7 @@ module.exports = (function usersSchema() {
 
     var collectionName = 'users';
     var usersSchema = mongoose.Schema(schema);
-    var users = mongoose.model(collectionName, usersSchema);
+    var users = mongoose.model(collectionName, usersSchema,collectionName);
 
     return users;
 })();

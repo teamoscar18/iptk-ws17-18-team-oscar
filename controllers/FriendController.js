@@ -17,7 +17,7 @@ function friendController() {
         try {
             users.find({
                 email: useremail
-            }, function (err, result) {
+            },'friends', function (err, result) {
 
                 console.log("result=" + result);
                 console.log("err=" + err);
@@ -80,6 +80,7 @@ function friendController() {
         try {
             var options = {upsert: true, new: true};
             var query = { email: useremail };
+
            
         } catch (ex) {
             console.log("Exception:" + ex);
