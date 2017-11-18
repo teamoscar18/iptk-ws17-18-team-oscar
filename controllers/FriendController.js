@@ -98,19 +98,19 @@ function friendController() {
                         options
                         , function (err, result) {
                             if (result) {
-                                console.log('added email address in user friendlist %s', result.friends);
+                                console.log('added email address in user friendlist %s', result.firstName);
                                 var friend = users.findOne({email:friendemail},function(err,user){
                                     if (user) {
-                                        console.log('friend exists in user table %s', user.email);
-                                        friends.findOne({useremail:useremail}).populate(firend).exec(function (err, story) {
-                                            if (err)res.send(response.setResponse(false, err, 400, null, "", ""));
-                                            console.log('The authors age is %s', story.useremail);
-                                          });
-                                          console.log('friend exists in user table %s', story);                               
-                                        return res.send(response.setResponse(true, " Fechting Friend successfull ", 200, result, "", ""));
+                                         console.log('friend exists in user table %s', user.email);
+                                        // friends.findOne({useremail:useremail}).populate(firend).exec(function (err, story) {
+                                        //     if (err)res.send(response.setResponse(false, err, 400, null, "", ""));
+                                        //     console.log('The authors age is %s', story.useremail);
+                                        //   });
+                                        //   console.log('friend exists in user table %s', story);                               
+                                        // return res.send(response.setResponse(true, " Fechting Friend successfull ", 200, result, "", ""));
                                     } else {
         
-                                        return res.send(response.setResponse(false, "findOne"+useremail+" "+err, 400, null, "", ""));
+                                        return res.send(response.setResponse(false, "findOne"+friendemail+" "+err, 400, null, "", ""));
                                     }
                                 });
                                 //return res.send(response.setResponse(true, " Fechting Friend successfull ", 200, result, "", ""));
