@@ -78,7 +78,7 @@ function usersController() {
                         city: parameters.city,
                         imageUrl: parameters.imageUrl,
                         verificationCode: '',
-                        friends: ["mujahid.mms@gmail.com", "rafiq@gmail.com", "billy@mail.com"],
+                        friends: [],
                         rank: '0'
                     };
 
