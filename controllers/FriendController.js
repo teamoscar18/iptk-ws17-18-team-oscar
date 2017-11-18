@@ -17,23 +17,27 @@ function friendController() {
         try {
             users.find({
                 email: useremail
-            },'friends', function (err, result) {
-
-                console.log("result=" + result);
-                console.log("err=" + err);
-                if (err) {
-                    return res.send(response.setResponse(false, " Server encountered some error, please Try again! ", 400, err, "", ""));
-                } else if (result) {
-
-                    if (result) {
-                        // Passwords match
-                        return res.send(response.setResponse(true, " Fechting Friends successfull ", 200, result, "", ""));
-                    } else {
-                        // Passwords don't match
-                        return res.send(response.setResponse(false, " User does not have any friends", 400, null, "", ""));
-                    }
-                } else return res.send(response.setResponse(false, "User does not exist", 400, null, "", ""));
-            });
+            }).populate({
+                path: 'friends',
+                // Get friends of friends - populate the 'friends' array for every friend
+                populate: { path: 'friends' }
+              }).exec(function (err, result) {
+                
+                                console.log("result=" + result);
+                                console.log("err=" + err);
+                                if (err) {
+                                    return res.send(response.setResponse(false, " Server encountered some error, please Try again! ", 400, err, "", ""));
+                                } else if (result) {
+                
+                                    if (result) {
+                                        // Passwords match
+                                        return res.send(response.setResponse(true, " Fechting Friends successfull ", 200, result, "", ""));
+                                    } else {
+                                        // Passwords don't match
+                                        return res.send(response.setResponse(false, " User does not have any friends", 400, null, "", ""));
+                                    }
+                                } else return res.send(response.setResponse(false, "User does not exist", 400, null, "", ""));
+                            });
             return next();
         } catch (ex) {
             console.log("Exception:" + ex);
