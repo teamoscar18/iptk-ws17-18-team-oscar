@@ -57,7 +57,7 @@ module.exports = (function usersSchema() {
         verificationCode: {
             type: String
         },
-        friends: [{ localField:'email',foreignField:'email', ref: 'users' }],
+        friends: [{ localField:'users.email',foreignField:'users.email', ref: 'users' }],
         rank: [{
             type: Number,
             default: 0
