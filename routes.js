@@ -15,8 +15,11 @@ module.exports = function (app) {
 
     app.get('/searchUser', userFriends.searchUser); //search Friend By Email
     app.get('/searchFriend', userFriends.searchUser); //search Friend By Email
-    app.get('/searchFriendByUserName', userFriends.searchUserByUserName); //search Friend By UserName
-    //app.get('/searchFriendByEmail', userFriends.searchUser); //search Friend By Email
+    app.get('/searchUserByUserName', userFriends.searchUser); //search Friend By UserName
+    app.get('/searchUserByEmail', userFriends.searchUser); //search Friend By Email
+    app.get('/searchFriendByUserName', userFriends.searchUser); //search Friend By UserName
+    app.get('/searchFriendByEmail', userFriends.searchUser); //search Friend By Email
+
 
     app.post('/addFriend', userFriends.addFriend); //add Friend
 
