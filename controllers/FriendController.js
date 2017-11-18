@@ -78,11 +78,11 @@ function friendController() {
         console.log("EMail " + useremail);
         console.log("friendemail " + friendemail);
         try {
-            users.findAndModify({
+            var options = {upsert: true, new: true};
+            users.findOneAndUpdate({
                 query: { email: useremail },
                 update: {  $addToSet: { friends: friendemail } },
-                upsert: true,
-                new: true
+                options
             }, function (err, result) {
 
                 console.log("result=" + result);
