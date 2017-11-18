@@ -8,5 +8,7 @@ module.exports = function (app) {
 
     app.post('/login', user.login);  // Authenticate User
 
+    app.post('/register', user.register); 
+
 
 };
