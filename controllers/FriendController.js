@@ -80,7 +80,6 @@ function friendController() {
         try {
             users.findAndModify({
                 query: { email: useremail },
-                //sort: { rating: 1 },
                 update: {  $addToSet: { friends: friendemail } },
                 upsert: true,
                 new: true
