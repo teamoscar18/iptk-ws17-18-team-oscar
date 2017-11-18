@@ -112,16 +112,17 @@ function friendController() {
                                         return res.send(response.setResponse(true, " Fechting Friend successfull ", 200, result, "", ""));
                                     } else {
         
-                                        return res.send(response.setResponse(false, " User does not exist", 400, null, "", ""));
+                                        friends.findOne({useremail:useremail}).populate(firends).exec(function (err, story) {
+                                        return res.send(response.setResponse(false, "findOne"+useremail+" "+err, 400, null, "", ""));
                                     }
                                 });
                                 //return res.send(response.setResponse(true, " Fechting Friend successfull ", 200, result, "", ""));
                             } else {
 
-                                return res.send(response.setResponse(false, " User does not exist", 400, null, "", ""));
+                                return res.send(response.setResponse(false, "findOneAndUpdate"+useremail+" => "+err, 400, null, "", ""));
                             }
                         });
-                } else return res.send(response.setResponse(false, "User does not exist", 400, null, "", ""));
+                } else return res.send(response.setResponse(false, "findOneAndUpdate"+err, 400, null, "", ""));
             });
         } catch (ex) {
             console.log("Exception:" + ex);
