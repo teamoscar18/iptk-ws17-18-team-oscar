@@ -57,7 +57,7 @@ module.exports = (function usersSchema() {
         verificationCode: {
             type: String
         },
-        friends: [{ type:  mongoose.Schema.Types.ObjectId, refPath: 'users.email' }],
+        friends: [{ type:  mongoose.Schema.Types.ObjectId, ref: 'users' }],
         rank: [{
             type: Number,
             default: 0
