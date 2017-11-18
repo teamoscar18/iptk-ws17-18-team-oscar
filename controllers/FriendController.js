@@ -2,7 +2,6 @@ function friendController() {
 
     var that = this;
     var users = require('../models/usersSchema');
-    var friends = require('../models/userFriendsSchema');
     var response = require('./ServiceResponse');
     var mongoose = require('../db').mongoose;
 
@@ -75,9 +74,9 @@ function friendController() {
     };
 
     // Search Friend
-    that.searchFriendByUserName = function (req, res, next) {
+    that.searchUserByUserName = function (req, res, next) {
         var userName = req.params.username;
-        console.log("EMail " + username);
+        console.log("EMail " + useremail);
         try {
             users.find({
                 userName: userName
