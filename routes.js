@@ -1,5 +1,6 @@
 module.exports = function (app) {
     var user = require('./controllers/UserController');
+    var userFriends = require('./controllers/FriendController');
 
 
     app.get('/', function (req, res, next) {
@@ -8,7 +9,11 @@ module.exports = function (app) {
 
     app.post('/login', user.login);  // Authenticate User
 
-    app.post('/register', user.register); 
+    app.post('/register', user.register); //register user
+
+    app.get('/getFriends', userFriends.getFriends); //fetch Friend List
+
+    app.get('/searchUser', userFriends.register); //search Friend
 
 
 };
