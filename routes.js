@@ -14,6 +14,7 @@ module.exports = function (app) {
     app.get('/getFriends', userFriends.getFriends); //fetch Friend List
 
     app.get('/searchUser', userFriends.searchUser); //search Friend
+    app.get('/searchFriend', userFriends.searchUser); //search Friend
 
     app.post('/addFriend', userFriends.addFriend); //add Friend
 
