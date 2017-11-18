@@ -82,17 +82,17 @@ function usersController() {
                                 return res.send(response.setResponse(false, "Error Occured While registering a user", 400, err, "", ""));
                             } else {
 
-                                transporter.sendMail({
-                                    to: user.email,
-                                    subject: "Victor City Registration Success",
-                                    text: "You have successfully registered to Victor City. Exploration of World is now on tip of your hand"
-                                }, function (error, info) {
-                                    if (error) {
-                                        console.log("UtilController that.sendEmail() Email Send error ", error);
-                                    } else {
-                                        console.log('UtilController that.sendEmail() Email sent: ' + info.response);
-                                    }
-                                });
+                                // transporter.sendMail({
+                                //     to: user.email,
+                                //     subject: "Victor City Registration Success",
+                                //     text: "You have successfully registered to Victor City. Exploration of World is now on tip of your hand"
+                                // }, function (error, info) {
+                                //     if (error) {
+                                //         console.log("UtilController that.sendEmail() Email Send error ", error);
+                                //     } else {
+                                //         console.log('UtilController that.sendEmail() Email sent: ' + info.response);
+                                //     }
+                                // });
 
                                 return res.send(response.setResponse(true, "Registration Was successful", 200, result, "", ""));
                             }
