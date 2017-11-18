@@ -4,6 +4,7 @@ module.exports = (function userFriendsSchema() {
 
     var mongoose = require('../db').mongoose;
     var userSchema = require('./usersSchema');
+    var Schema = mongoose.Schema;
     
 
     var friendsSchema = {
