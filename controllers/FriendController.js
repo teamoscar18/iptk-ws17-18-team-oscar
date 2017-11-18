@@ -16,7 +16,7 @@ function friendController() {
 
         try {
             users.findOne({
-                email: email
+                email: useremail
             }, {
                 friends: 1,
                 email: 1
