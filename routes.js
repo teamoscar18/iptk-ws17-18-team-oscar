@@ -13,7 +13,7 @@ module.exports = function (app) {
 
     app.get('/getFriends', userFriends.getFriends); //fetch Friend List
 
-    app.get('/searchUser', userFriends.register); //search Friend
+    app.get('/searchUser', userFriends.searchUser); //search Friend
 
 
 };
