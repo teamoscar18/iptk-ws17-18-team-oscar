@@ -30,7 +30,7 @@ function friendController() {
 
                     if (result) {
                         // Passwords match
-                        return res.send(response.setResponse(true, " Fechting Friends successfull ", 200, result.friends, "", ""));
+                        return res.send(response.setResponse(true, " Fechting Friends successfull ", 200, result, "", ""));
                     } else {
                         // Passwords don't match
                         return res.send(response.setResponse(false, " User does not have any friends", 400, null, "", ""));
