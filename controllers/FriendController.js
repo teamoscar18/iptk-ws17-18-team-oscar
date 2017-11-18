@@ -92,14 +92,35 @@ function friendController() {
                     return res.send(response.setResponse(false, " Server encountered some error, please Try again! ", 400, err, "", ""));
                 } else if (result) {
                     
+                    friends.findOneAndUpdate(
+                        query,
+                        {  $set: { useremail: useremail } },
+                        options
+                        , function (err, result) {
+                            if (result) {
+                                var friend = users.findOne({email:friendemail},function(err,user){
+                                    if (user) {
+                                        friends.findOne({useremail:useremail}).populate(firends).exec(function (err, story) {
+                                            if (err)res.send(response.setResponse(false, err, 400, null, "", ""));;
+                                            
+                                            console.log('The author is %s', story.useremail);
+                                            // prints "The author is Ian Fleming"
+                                            
+                                            console.log('The authors age is %s', story.useremail);
+                                            // prints "The authors age is null'
+                                          });                               
+                                        return res.send(response.setResponse(true, " Fechting Friend successfull ", 200, result, "", ""));
+                                    } else {
+        
+                                        return res.send(response.setResponse(false, " User does not exist", 400, null, "", ""));
+                                    }
+                                });
+                                //return res.send(response.setResponse(true, " Fechting Friend successfull ", 200, result, "", ""));
+                            } else {
 
-                    if (result) {
-
-                        return res.send(response.setResponse(true, " Fechting Friend successfull ", 200, result, "", ""));
-                    } else {
-
-                        return res.send(response.setResponse(false, " User does not exist", 400, null, "", ""));
-                    }
+                                return res.send(response.setResponse(false, " User does not exist", 400, null, "", ""));
+                            }
+                        });
                 } else return res.send(response.setResponse(false, "User does not exist", 400, null, "", ""));
             });
         } catch (ex) {
