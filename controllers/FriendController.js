@@ -19,8 +19,7 @@ function friendController() {
                 email: useremail
             }).populate({
                 path: 'friends',
-                // Get friends of friends - populate the 'friends' array for every friend
-                populate: { path: 'friends' }
+                model: 'users'
               }).exec(function (err, result) {
                 
                                 console.log("result=" + result);
