@@ -34,6 +34,7 @@
     "passport-local": "^1.0.0",
     "request": "^2.81.0",
     "restify": "^4.3.0",
-    "socket.io": "^2.0.3"
+    "socket.io": "^2.0.3",
+    "validator":"^9.1.1"
   }
 }

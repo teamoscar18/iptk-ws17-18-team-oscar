@@ -1,6 +1,7 @@
 function friendController() {
 
     var that = this;
+    var validator = require('validator');
     var users = require('../models/usersSchema');
     var response = require('./ServiceResponse');
     var mongoose = require('../db').mongoose;
@@ -19,23 +20,23 @@ function friendController() {
             }).populate({
                 path: 'friends',
                 model: 'users'
-              }).exec(function (err, result) {
-                
-                                console.log("result=" + result);
-                                console.log("err=" + err);
-                                if (err) {
-                                    return res.send(response.setResponse(false, " Server encountered some error, please Try again! ", 400, err, "", ""));
-                                } else if (result) {
-                
-                                    if (result) {
-                                        // Passwords match
-                                        return res.send(response.setResponse(true, " Fechting Friends successfull ", 200, result, "", ""));
-                                    } else {
-                                        // Passwords don't match
-                                        return res.send(response.setResponse(false, " User does not have any friends", 400, null, "", ""));
-                                    }
-                                } else return res.send(response.setResponse(false, "User does not exist", 400, null, "", ""));
-                            });
+            }).exec(function (err, result) {
+
+                console.log("result=" + result);
+                console.log("err=" + err);
+                if (err) {
+                    return res.send(response.setResponse(false, " Server encountered some error, please Try again! ", 400, err, "", ""));
+                } else if (result) {
+
+                    if (result) {
+                        // Passwords match
+                        return res.send(response.setResponse(true, " Fechting Friends successfull ", 200, result, "", ""));
+                    } else {
+                        // Passwords don't match
+                        return res.send(response.setResponse(false, " User does not have any friends", 400, null, "", ""));
+                    }
+                } else return res.send(response.setResponse(false, "User does not exist", 400, null, "", ""));
+            });
             return next();
         } catch (ex) {
             console.log("Exception:" + ex);
@@ -47,26 +48,50 @@ function friendController() {
     that.searchUser = function (req, res, next) {
         var useremail = req.params.email;
         console.log("EMail " + useremail);
+
         try {
-            users.find({
-                email: useremail
-            }, function (err, result) {
+            if (validator.isEmail(useremail)) {
+                users.find({
+                    email: useremail
+                }, function (err, result) {
 
-                console.log("result=" + result);
-                console.log("err=" + err);
-                if (err) {
-                    return res.send(response.setResponse(false, " Server encountered some error, please Try again! ", 400, err, "", ""));
-                } else if (result) {
+                    console.log("result=" + result);
+                    console.log("err=" + err);
+                    if (err) {
+                        return res.send(response.setResponse(false, " Server encountered some error, please Try again! ", 400, err, "", ""));
+                    } else if (result) {
 
-                    if (result) {
+                        if (result) {
 
-                        return res.send(response.setResponse(true, " Fechting Friend successfull ", 200, result, "", ""));
-                    } else {
+                            return res.send(response.setResponse(true, " Fechting Friend successfull ", 200, result, "", ""));
+                        } else {
 
-                        return res.send(response.setResponse(false, " User does not exist", 400, null, "", ""));
-                    }
-                } else return res.send(response.setResponse(false, "User does not exist", 400, null, "", ""));
-            });
+                            return res.send(response.setResponse(false, " User does not exist", 400, null, "", ""));
+                        }
+                    } else return res.send(response.setResponse(false, "User does not exist", 400, null, "", ""));
+                });
+            } else {
+                users.find({
+                    userName: username
+                }, function (err, result) {
+
+                    console.log("result=" + result);
+                    console.log("err=" + err);
+                    if (err) {
+                        return res.send(response.setResponse(false, " Server encountered some error, please Try again! ", 400, err, "", ""));
+                    } else if (result) {
+
+                        if (result) {
+
+                            return res.send(response.setResponse(true, " Fechting Friend successfull ", 200, result, "", ""));
+                        } else {
+
+                            return res.send(response.setResponse(false, " User does not exist", 400, null, "", ""));
+                        }
+                    } else return res.send(response.setResponse(false, "User does not exist", 400, null, "", ""));
+                });
+            }
+
         } catch (ex) {
             console.log("Exception:" + ex);
             return res.send(response.setResponse(false, "/searchUser:Exception Occured", 400, ex, "", ""));
@@ -103,16 +128,21 @@ function friendController() {
         }
     };
 
-     // add Friend
-     that.addFriend = function (req, res, next) {
+    // add Friend
+    that.addFriend = function (req, res, next) {
         var useremail = req.params.email;
         var friendemail = req.params.friendemail;
-        
+
         console.log("EMail " + useremail);
         console.log("friendemail " + friendemail);
         try {
-            var options = {upsert: true, new: true};
-            var query = { email: useremail };
+            var options = {
+                upsert: true,
+                new: true
+            };
+            var query = {
+                email: useremail
+            };
             users.findOne({
                 email: friendemail
             }, function (err, friend) {
@@ -122,7 +152,11 @@ function friendController() {
                 if (err) {
                     return res.send(response.setResponse(false, " Server encountered some error, please Try again! ", 400, err, "", ""));
                 } else if (friend) {
-                    users.findOneAndUpdate(query,{$push:{friends:mongoose.Types.ObjectId(friend._id)}},options,function (err, user) {
+                    users.findOneAndUpdate(query, {
+                        $push: {
+                            friends: mongoose.Types.ObjectId(friend._id)
+                        }
+                    }, options, function (err, user) {
                         if (user) {
                             return res.send(response.setResponse(true, " adding Friend successfull ", 200, user, "", ""));
                         } else {
@@ -132,7 +166,7 @@ function friendController() {
                 } else return res.send(response.setResponse(false, "Friend user does not exist", 400, null, "", ""));
             });
 
-           
+
         } catch (ex) {
             console.log("Exception:" + ex);
             return res.send(response.setResponse(false, "/addFriend:Exception Occured", 400, ex, "", ""));
