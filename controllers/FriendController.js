@@ -46,13 +46,13 @@ function friendController() {
 
     // Search Friend
     that.searchUser = function (req, res, next) {
-        var useremail = req.params.email;
-        console.log("EMail " + useremail);
+        var userid = req.params.email;
+        console.log("userId " + userid);
 
         try {
-            if (validator.isEmail(String(useremail))) {
+            if (validator.isEmail(String(userid))) {
                 users.find({
-                    email: useremail
+                    email: userid
                 }, function (err, result) {
 
                     console.log("result=" + result);
@@ -72,7 +72,7 @@ function friendController() {
                 });
             } else {
                 users.find({
-                    userName: username
+                    userName: userid
                 }, function (err, result) {
 
                     console.log("result=" + result);
