@@ -11,9 +11,9 @@ module.exports = function (app) {
 
     app.post('/register', user.register); //register user
 
-    app.get('/getFriends', userFriends.getFriends); //fetch Friend List
+    // app.get('/getFriends', userFriends.getFriends); //fetch Friend List
 
-    app.get('/searchUser', userFriends.searchUser); //search Friend
+    // app.get('/searchUser', userFriends.searchUser); //search Friend
 
 
 };
