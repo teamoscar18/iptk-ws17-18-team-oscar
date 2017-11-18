@@ -19,9 +19,9 @@ module.exports = (function userFriendsSchema() {
     };
 
     var collectionName = 'userfriends';
-    var userFriendsSchema = mongoose.Schema(friendsSchema);
-    var user = mongoose.model('users').Schema;
-    var userFriends = mongoose.model(collectionName, userFriendsSchema)
+    var users = mongoose.model('users').Schema;
+    var userFriendsSchema = mongoose.Schema(friendsSchema);   
+    var userFriends = mongoose.model(collectionName, userFriendsSchema);
 
     return userFriends;
 })();
