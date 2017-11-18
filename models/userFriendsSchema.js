@@ -13,7 +13,7 @@ module.exports = (function userFriendsSchema() {
         },
         friendlist: [{
             type: Schema.Types.ObjectId,
-            ref: "user"
+            ref: 'user'
         }]
     };
 
